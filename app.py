@@ -4,13 +4,14 @@ import numpy as np
 
 app = Flask(__name__)
 
-# Load artifacts
+
 pt = pickle.load(open('artifacts/pt.pkl', 'rb'))
 books = pickle.load(open('artifacts/books.pkl', 'rb'))
 similarity_scores = pickle.load(open('artifacts/similarity_scores.pkl', 'rb'))
 
 def recommend(book_name):
-    # index fetch
+
+
     index = np.where(pt.index == book_name)[0][0]
     similar_items = sorted(list(enumerate(similarity_scores[index])), key=lambda x: x[1], reverse=True)[1:5]
 
