@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 40px; background-color: #f2f2f2; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .book {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            background: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .book img {
+            height: 100px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 Book Recommender System</h1>
+    <form method="POST">
+        <input type="text" name="book_name" placeholder="Enter a book title..." required>
+        <input type="submit" value="Recommend">
+    </form>
+
+    {% if recommendations %}
+        <h2>Recommendations:</h2>
+        {% for rec in recommendations %}
+            <div class="book">
+                <img src="{{ rec[2] }}" alt="Cover Image">
+                <div>
+                    <strong>{{ rec[0] }}</strong><br>
+                    <em>{{ rec[1] }}</em>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>
